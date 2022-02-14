@@ -26,7 +26,7 @@ public class InternalCheckData {
     @Autowired
     private Environment env;
 
-    @Scheduled(fixedRate = 2000)
+    @Scheduled(fixedRate = 5000)
     public void checkNoteData() {
         double percentageIncrease = Double.parseDouble(Objects.requireNonNull(
                 env.getProperty("percent.increase")));
