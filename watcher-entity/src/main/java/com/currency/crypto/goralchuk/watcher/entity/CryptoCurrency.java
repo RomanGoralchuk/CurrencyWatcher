@@ -1,6 +1,5 @@
 package com.currency.crypto.goralchuk.watcher.entity;
 
-import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -13,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Data
 @AllArgsConstructor
@@ -20,6 +20,7 @@ import javax.persistence.Id;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect
 @Entity
+@Table(name = "crypto_currency")
 public class CryptoCurrency {
     @Id
     @Column(name = "currency_id")

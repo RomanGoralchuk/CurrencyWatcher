@@ -1,4 +1,4 @@
-package com.currency.crypto.goralchuk.watcher.getdata;
+package com.currency.crypto.goralchuk.watcher.checkdata;
 
 import com.currency.crypto.goralchuk.watcher.entity.CryptoCurrency;
 import com.currency.crypto.goralchuk.watcher.services.CryptoCurrencyService;
@@ -6,12 +6,10 @@ import com.currency.crypto.goralchuk.watcher.utils.SSLUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,7 +19,7 @@ import java.util.Arrays;
 
 @Slf4j
 @EnableScheduling
-@Configuration
+@Component
 public class ExternalSourceData {
 
     @Autowired

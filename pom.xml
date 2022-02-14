@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.6.3</version>
     </parent>
-
+    <modelVersion>4.0.0</modelVersion>
     <groupId>com.currency.crypto.goralchuk.watcher</groupId>
-    <artifactId>watcher</artifactId>
+    <artifactId>watcher-app</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>watcher</name>
     <packaging>pom</packaging>
+    <name>watcher</name>
     <description>Something about cryptocurrencies</description>
 
     <properties>
         <java.version>11</java.version>
         <mariadb-java-client.version>2.7.4</mariadb-java-client.version>
         <flyway-core.version>8.0.5</flyway-core.version>
-        <jackson-databind.version>2.13.1</jackson-databind.version>
         <modelmapper.version>2.4.5</modelmapper.version>
     </properties>
 
@@ -38,10 +36,24 @@
 
             <exclusions>
                 <exclusion>
+                    <groupId>org.flywaydb</groupId>
+                    <artifactId>flyway-core</artifactId>
+                </exclusion>
+                <exclusion>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-starter-tomcat</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
 
         <dependency>
@@ -67,22 +79,23 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>${jackson-databind.version}</version>
         </dependency>
         <dependency>
             <groupId>org.modelmapper</groupId>
             <artifactId>modelmapper</artifactId>
             <version>${modelmapper.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jetty</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-dbcp2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
         </dependency>
 
         <!--Tests-->
@@ -100,7 +113,7 @@
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>${flyway-core.version}</version>
                 <configuration>
-                    <url>jdbc:mariadb://localhost:3306/</url>
+                    <url>jdbc:mariadb://localhost:3306/watcher_db</url>
                     <user>user</user>
                     <password>userpass</password>
                     <schemas>
@@ -112,7 +125,6 @@
                 </configuration>
             </plugin>
         </plugins>
-
         <pluginManagement>
             <plugins>
                 <plugin>

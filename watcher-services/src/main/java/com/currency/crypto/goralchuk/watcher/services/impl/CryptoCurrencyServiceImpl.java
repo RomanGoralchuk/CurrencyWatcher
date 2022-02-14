@@ -3,6 +3,7 @@ package com.currency.crypto.goralchuk.watcher.services.impl;
 import com.currency.crypto.goralchuk.watcher.dao.CryptoCurrencyRepository;
 import com.currency.crypto.goralchuk.watcher.entity.CryptoCurrency;
 import com.currency.crypto.goralchuk.watcher.services.CryptoCurrencyService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,8 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+@Slf4j
 @Transactional
+@Service
 public class CryptoCurrencyServiceImpl implements CryptoCurrencyService {
 
     @Autowired
